@@ -1,0 +1,34 @@
+\begin{theindex}
+
+  \item {ASCII Directory Reference}, \hyperpage{5}
+  \item {ASCII.ino}
+    \subitem {loop}, \hyperpage{7}
+    \subitem {pinB}, \hyperpage{8}
+    \subitem {pinG}, \hyperpage{8}
+    \subitem {pinR}, \hyperpage{8}
+    \subitem {setRGB}, \hyperpage{7}
+    \subitem {setup}, \hyperpage{7}
+  \item {ASCII/ASCII.ino}, \hyperpage{7}
+
+  \indexspace
+
+  \item {loop}
+    \subitem {ASCII.ino}, \hyperpage{7}
+
+  \indexspace
+
+  \item {pinB}
+    \subitem {ASCII.ino}, \hyperpage{8}
+  \item {pinG}
+    \subitem {ASCII.ino}, \hyperpage{8}
+  \item {pinR}
+    \subitem {ASCII.ino}, \hyperpage{8}
+
+  \indexspace
+
+  \item {setRGB}
+    \subitem {ASCII.ino}, \hyperpage{7}
+  \item {setup}
+    \subitem {ASCII.ino}, \hyperpage{7}
+
+\end{theindex}
