@@ -1,40 +1,113 @@
+/**
+ * @file Ex6_RGB.ino
+ * @author
+ * @date 2026-01-07
+ * @brief Reads RGB values from the Serial Monitor and sets an RGB LED using PWM.
+ *
+ * @details
+ * This sketch expects input in the Serial Monitor as three integers, typically separated
+ * by commas, for example: `200,100,40`.
+ *
+ * It uses:
+ * - Serial.parseInt() to extract the three integer values (R, G, B) from the incoming text.
+ * - analogWrite() on PWM pins to set LED brightness for each channel (0..255).
+ *
+ * A small "buffer cleanup" loop removes leftover newline/carriage return characters
+ * (\\n, \\r) so they do not interfere with the next read.
+ *
+ * @hardware
+ * - RGB LED (common cathode / common ground):
+ *   - Longest leg -> GND
+ *   - R, G, B legs -> PWM pins 9, 10, 11 through resistors
+ *
+ * @note
+ * If your RGB LED is common anode (common to +5V), the PWM logic must be inverted:
+ * use `255 - value` for each channel. This code assumes common cathode (common ground).
+ */
+
 #include <Arduino.h>
 
-const uint8_t pinR = 9;
-const uint8_t pinG = 10;
-const uint8_t pinB = 11;
+/**
+ * @name RGB PWM pins
+ * @brief PWM pins used to drive the RGB LED channels.
+ * @{
+ */
+const uint8_t pinR = 9;   ///< PWM pin for the red channel
+const uint8_t pinG = 10;  ///< PWM pin for the green channel
+const uint8_t pinB = 11;  ///< PWM pin for the blue channel
+/** @} */
 
-void setRGB(int r, int g, int b) { // Taked 3 numbers red, green and blue
-  r = constrain(r, 0, 255);        // set's the max and low so we can apply color to the RHB LED with range 0 - 255
-  g = constrain(g, 0, 255);        // ect if r = 300 becomes 255
+/**
+ * @brief Set the RGB LED color using PWM.
+ *
+ * @details
+ * Ensures each channel is clamped to the valid PWM range (0..255), then writes the
+ * values using analogWrite(). For a common-cathode RGB LED:
+ * - 0   = off
+ * - 255 = full brightness
+ *
+ * @param r Red intensity (0..255)
+ * @param g Green intensity (0..255)
+ * @param b Blue intensity (0..255)
+ */
+void setRGB(int r, int g, int b) {            // Takes 3 numbers: red, green and blue
+  r = constrain(r, 0, 255);                   // Clamp to valid PWM range
+  g = constrain(g, 0, 255);
   b = constrain(b, 0, 255);
 
-  analogWrite(pinR, r);            // analogwrite outputs the values in PWM which means
-  analogWrite(pinG, g);            // 0 = off and 255 = fully on, so values inbetween becomes partial brightness
+  analogWrite(pinR, r);                       // Output PWM values to LED channels
+  analogWrite(pinG, g);
   analogWrite(pinB, b);
 }
 
+/**
+ * @brief Arduino setup function.
+ *
+ * @details
+ * Initializes Serial communication and sets RGB pins as OUTPUT.
+ * Turns the LED off initially by setting (0,0,0).
+ */
 void setup() {
-  Serial.begin(115200);           // Genereal setup for the code in arduino
-  pinMode(pinR, OUTPUT);          // Sets the RGB pins as outputs
-  pinMode(pinG, OUTPUT);          // Turns off the LEDS off intially with 0,0,0
+  Serial.begin(115200);                       // Start serial communication
+
+  pinMode(pinR, OUTPUT);                      // Configure RGB pins as outputs
+  pinMode(pinG, OUTPUT);
   pinMode(pinB, OUTPUT);
-  setRGB(0, 0, 0);
+
+  setRGB(0, 0, 0);                            // LED off at startup
 }
 
-void loop() {                     // Reading the data in the loop
-  if (Serial.available() > 0) {  // This checks: is there at least one byte waiting in the serial buff?
-    int r = Serial.parseInt();    // if Yes then we start reading
-    int g = Serial.parseInt();    // The serial.parseInt() finds and reads the next integer in the incoming text. It ignores non numeric characters like commas and spaces
-    int b = Serial.parseInt();    // ect 200,100,40 becomes first int = 200, second Int = 100, Third Int = 40
+/**
+ * @brief Arduino main loop.
+ *
+ * @details
+ * When serial data is available:
+ * 1) Read three integers using Serial.parseInt() -> r, g, b
+ * 2) Remove leftover newline/carriage return characters from the buffer
+ * 3) Print parsed values for debugging
+ * 4) Update the RGB LED using setRGB(r, g, b)
+ *
+ * @note
+ * Serial.parseInt() skips non-numeric characters (like commas), so input formats like
+ * `200,100,40` or `200 100 40` both work.
+ */
+void loop() {
+  if (Serial.available() > 0) {               // Check if at least one byte is available
+    int r = Serial.parseInt();                // Read first integer
+    int g = Serial.parseInt();                // Read second integer
+    int b = Serial.parseInt();                // Read third integer
 
-    
-    while (Serial.available() > 0) {    // clean op option that helps with clearing op leftovers, Serial Monitor often sends line endings \n, \r after pressing send
-      char c = (char)Serial.peek();     // If they dont get removed they can interfere with the next read, this loop, looks at the next character without removing it, if its newline or carriage return = it reads it once and stops
-      if (c == '\n' || c == '\r') { Serial.read(); break; } // othervise it reads and discards the characters until the line ending is reached
-      Serial.read();
+    // Buffer cleanup: remove line ending characters so they don't affect next read
+    while (Serial.available() > 0) {
+      char c = (char)Serial.peek();           // Look at next char without removing it
+      if (c == '\n' || c == '\r') {           // If newline/CR, consume one and stop
+        Serial.read();
+        break;
+      }
+      Serial.read();                          // Otherwise discard the character
     }
 
+    // Debug output: show what was parsed
     Serial.print("Parsed -> R=");
     Serial.print(r);
     Serial.print(" G=");
@@ -42,6 +115,7 @@ void loop() {                     // Reading the data in the loop
     Serial.print(" B=");
     Serial.println(b);
 
+    // Apply the color to the RGB LED
     setRGB(r, g, b);
   }
 }
