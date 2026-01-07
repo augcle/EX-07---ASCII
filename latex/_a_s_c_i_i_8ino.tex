@@ -1,0 +1,113 @@
+\doxysection{ASCII/\+\+ASCII.ino File Reference}
+\hypertarget{_a_s_c_i_i_8ino}{}\label{_a_s_c_i_i_8ino}\index{ASCII/ASCII.ino@{ASCII/ASCII.ino}}
+{\ttfamily \+\#include $<$Arduino.\+h$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{_a_s_c_i_i_8ino_a69352682ab45c5d2781a83171b820c83}{set\+RGB}} (int r, int g, int b)
+\begin{DoxyCompactList}\small\item\em Set the RGB LED color using PWM. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{_a_s_c_i_i_8ino_a4fc01d736fe50cf5b977f755b675f11d}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Arduino setup function. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{_a_s_c_i_i_8ino_afe461d27b9c48d5921c00d521181f12f}{loop}} ()
+\begin{DoxyCompactList}\small\item\em Arduino main loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{Indent}\textbf{ RGB PWM pins}\par
+{\em PWM pins used to drive the RGB LED channels. }\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{_a_s_c_i_i_8ino_a041d65f9ac5e3bc2381389181c4ebca0}{pinR}} = 9
+\begin{DoxyCompactList}\small\item\em PWM pin for the red channel. \end{DoxyCompactList}\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{_a_s_c_i_i_8ino_ae2c295da152e7c2bb4f7535fe4d3818d}{pinG}} = 10
+\begin{DoxyCompactList}\small\item\em PWM pin for the green channel. \end{DoxyCompactList}\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{_a_s_c_i_i_8ino_a75b5e382f2d42f0aee16d334f014c780}{pinB}} = 11
+\begin{DoxyCompactList}\small\item\em PWM pin for the blue channel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\label{doc-func-members}
+\Hypertarget{_a_s_c_i_i_8ino_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{_a_s_c_i_i_8ino_afe461d27b9c48d5921c00d521181f12f}\index{ASCII.ino@{ASCII.ino}!loop@{loop}}
+\index{loop@{loop}!ASCII.ino@{ASCII.ino}}
+\doxysubsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily \label{_a_s_c_i_i_8ino_afe461d27b9c48d5921c00d521181f12f} 
+void loop (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Arduino main loop. 
+
+When serial data is available:\+ 1) Read three integers using Serial.\+parse\+Int() -\/\texorpdfstring{$>$}{>} r, g, b 2) Remove leftover newline/\+carriage return characters from the buffer 3) Print parsed values for debugging 4) Update the RGB LED using set\+RGB(r, g, b)
+
+\begin{DoxyNote}{Note}
+Serial.\+parse\+Int() skips non-\/numeric characters (like commas), so input formats like {\ttfamily 200,100,40} or {\ttfamily 200 100 40} both work. 
+\end{DoxyNote}
+\Hypertarget{_a_s_c_i_i_8ino_a69352682ab45c5d2781a83171b820c83}\index{ASCII.ino@{ASCII.ino}!setRGB@{setRGB}}
+\index{setRGB@{setRGB}!ASCII.ino@{ASCII.ino}}
+\doxysubsubsection{\texorpdfstring{setRGB()}{setRGB()}}
+{\footnotesize\ttfamily \label{_a_s_c_i_i_8ino_a69352682ab45c5d2781a83171b820c83} 
+void set\+RGB (\begin{DoxyParamCaption}\item[{int}]{r}{, }\item[{int}]{g}{, }\item[{int}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Set the RGB LED color using PWM. 
+
+Ensures each channel is clamped to the valid PWM range (0..255), then writes the values using analog\+Write(). For a common-\/cathode RGB LED:\+
+\begin{DoxyItemize}
+\item 0 = off
+\item 255 = full brightness
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & Red intensity (0..255) \\
+\hline
+{\em g} & Green intensity (0..255) \\
+\hline
+{\em b} & Blue intensity (0..255) \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_a_s_c_i_i_8ino_a4fc01d736fe50cf5b977f755b675f11d}\index{ASCII.ino@{ASCII.ino}!setup@{setup}}
+\index{setup@{setup}!ASCII.ino@{ASCII.ino}}
+\doxysubsubsection{\texorpdfstring{setup()}{setup()}}
+{\footnotesize\ttfamily \label{_a_s_c_i_i_8ino_a4fc01d736fe50cf5b977f755b675f11d} 
+void setup (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Arduino setup function. 
+
+Initializes Serial communication and sets RGB pins as OUTPUT. Turns the LED off initially by setting (0,0,0). 
+
+\label{doc-var-members}
+\Hypertarget{_a_s_c_i_i_8ino_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{_a_s_c_i_i_8ino_a75b5e382f2d42f0aee16d334f014c780}\index{ASCII.ino@{ASCII.ino}!pinB@{pinB}}
+\index{pinB@{pinB}!ASCII.ino@{ASCII.ino}}
+\doxysubsubsection{\texorpdfstring{pinB}{pinB}}
+{\footnotesize\ttfamily \label{_a_s_c_i_i_8ino_a75b5e382f2d42f0aee16d334f014c780} 
+const uint8\+\_\+t pinB = 11}
+
+
+
+PWM pin for the blue channel. 
+
+\Hypertarget{_a_s_c_i_i_8ino_ae2c295da152e7c2bb4f7535fe4d3818d}\index{ASCII.ino@{ASCII.ino}!pinG@{pinG}}
+\index{pinG@{pinG}!ASCII.ino@{ASCII.ino}}
+\doxysubsubsection{\texorpdfstring{pinG}{pinG}}
+{\footnotesize\ttfamily \label{_a_s_c_i_i_8ino_ae2c295da152e7c2bb4f7535fe4d3818d} 
+const uint8\+\_\+t pinG = 10}
+
+
+
+PWM pin for the green channel. 
+
+\Hypertarget{_a_s_c_i_i_8ino_a041d65f9ac5e3bc2381389181c4ebca0}\index{ASCII.ino@{ASCII.ino}!pinR@{pinR}}
+\index{pinR@{pinR}!ASCII.ino@{ASCII.ino}}
+\doxysubsubsection{\texorpdfstring{pinR}{pinR}}
+{\footnotesize\ttfamily \label{_a_s_c_i_i_8ino_a041d65f9ac5e3bc2381389181c4ebca0} 
+const uint8\+\_\+t pinR = 9}
+
+
+
+PWM pin for the red channel. 
+
