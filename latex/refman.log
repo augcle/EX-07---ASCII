@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.7)  7 JAN 2026 14:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.7)  7 JAN 2026 14:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1040,12 +1040,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
  []
 
-LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 26.
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 30.
+(Font)              scaled to size 8.09995pt on input line 8.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <9> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 8.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.09995pt on input line 8.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 15.
+LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
+(Font)              scaled to size 8.99994pt on input line 15.
+LaTeX Font Info:    Font shape `T1/phv/b/n' will be
+(Font)              scaled to size 10.79993pt on input line 28.
+LaTeX Font Info:    Font shape `T1/phv/m/n' will be
+(Font)              scaled to size 7.19995pt on input line 32.
+LaTeX Font Info:    Font shape `T1/phv/bc/n' will be
+(Font)              scaled to size 8.99994pt on input line 41.
+
+Underfull \hbox (badness 10000) detected at line 41
+[][][]
+ []
+
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 37.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 48.
 [7]) [8] (refman.ind
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
 (Font)              scaled to size 22.39185pt on input line 1.
@@ -1063,22 +1080,26 @@ Package rerunfilecheck Info: File `refman.out' has not changed.
 (rerunfilecheck)             Checksum: 2FBCE26DCE15D76F58845FA36A073617;2642.
  ) 
 Here is how much of TeX's memory you used:
- 20032 strings out of 467871
- 351068 string characters out of 5418377
- 787195 words of memory out of 5000000
- 48546 multiletter control sequences out of 15000+600000
- 665555 words of font info for 83 fonts, out of 8000000 for 9000
+ 20261 strings out of 467871
+ 355880 string characters out of 5418377
+ 791195 words of memory out of 5000000
+ 48769 multiletter control sequences out of 15000+600000
+ 676054 words of font info for 90 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 103i,11n,117p,1505b,494s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 103i,11n,117p,1505b,917s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/augcl/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmmi10.pfb><C:/Users/augcl/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courie
-r/ucrr8a.pfb><C:/Users/augcl/AppData/Local/Programs/MiKTeX/fonts/type1/urw/cour
-ier/ucrro8a.pfb><C:/Users/augcl/AppData/Local/Programs/MiKTeX/fonts/type1/urw/h
-elvetic/uhvb8a.pfb><C:/Users/augcl/AppData/Local/Programs/MiKTeX/fonts/type1/ur
-w/helvetic/uhvr8a.pfb>
-Output written on refman.pdf (13 pages, 79734 bytes).
+cmmi10.pfb><C:/Users/augcl/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmmi7.pfb><C:/Users/augcl/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmsy7.pfb><C:/Users/augcl/AppData/Local/Programs/MiKTeX/fonts/
+type1/urw/courier/ucrr8a.pfb><C:/Users/augcl/AppData/Local/Programs/MiKTeX/font
+s/type1/urw/courier/ucrro8a.pfb><C:/Users/augcl/AppData/Local/Programs/MiKTeX/f
+onts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/augcl/AppData/Local/Programs/MiKTe
+X/fonts/type1/urw/helvetic/uhvb8ac.pfb><C:/Users/augcl/AppData/Local/Programs/M
+iKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Users/augcl/AppData/Local/Program
+s/MiKTeX/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on refman.pdf (13 pages, 114316 bytes).
 PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
+ 247 PDF objects out of 1000 (max. 8388607)
+ 42 named destinations out of 1000 (max. 500000)
  137 words of extra memory for PDF output out of 10000 (max. 10000000)
 

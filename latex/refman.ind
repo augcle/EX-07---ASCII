@@ -7,7 +7,7 @@
     \subitem {pinG}, \hyperpage{8}
     \subitem {pinR}, \hyperpage{8}
     \subitem {setRGB}, \hyperpage{7}
-    \subitem {setup}, \hyperpage{7}
+    \subitem {setup}, \hyperpage{8}
   \item {ASCII/ASCII.ino}, \hyperpage{7}
 
   \indexspace
@@ -29,6 +29,6 @@
   \item {setRGB}
     \subitem {ASCII.ino}, \hyperpage{7}
   \item {setup}
-    \subitem {ASCII.ino}, \hyperpage{7}
+    \subitem {ASCII.ino}, \hyperpage{8}
 
 \end{theindex}

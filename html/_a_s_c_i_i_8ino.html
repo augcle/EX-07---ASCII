@@ -96,14 +96,23 @@ $(function(){initNavTree('_a_s_c_i_i_8ino.html','',''); });
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a69352682ab45c5d2781a83171b820c83" id="r_a69352682ab45c5d2781a83171b820c83"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a69352682ab45c5d2781a83171b820c83">setRGB</a> (int r, int g, int b)</td></tr>
+<tr class="memdesc:a69352682ab45c5d2781a83171b820c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the RGB LED color using PWM.  <br /></td></tr>
 <tr class="memitem:a4fc01d736fe50cf5b977f755b675f11d" id="r_a4fc01d736fe50cf5b977f755b675f11d"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4fc01d736fe50cf5b977f755b675f11d">setup</a> ()</td></tr>
+<tr class="memdesc:a4fc01d736fe50cf5b977f755b675f11d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arduino setup function.  <br /></td></tr>
 <tr class="memitem:afe461d27b9c48d5921c00d521181f12f" id="r_afe461d27b9c48d5921c00d521181f12f"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#afe461d27b9c48d5921c00d521181f12f">loop</a> ()</td></tr>
+<tr class="memdesc:afe461d27b9c48d5921c00d521181f12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Arduino main loop.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
+<tr id="var-members-0" class="groupHeader"><td colspan="2"><div class="groupHeader">RGB PWM pins</div></td></tr>
+<tr><td colspan="2" class="ititle"><div class="groupText"><p>PWM pins used to drive the RGB LED channels. </p>
+</div></td></tr>
 <tr class="memitem:a041d65f9ac5e3bc2381389181c4ebca0" id="r_a041d65f9ac5e3bc2381389181c4ebca0"><td class="memItemLeft">const uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a041d65f9ac5e3bc2381389181c4ebca0">pinR</a> = 9</td></tr>
+<tr class="memdesc:a041d65f9ac5e3bc2381389181c4ebca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM pin for the red channel.  <br /></td></tr>
 <tr class="memitem:ae2c295da152e7c2bb4f7535fe4d3818d" id="r_ae2c295da152e7c2bb4f7535fe4d3818d"><td class="memItemLeft">const uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#ae2c295da152e7c2bb4f7535fe4d3818d">pinG</a> = 10</td></tr>
+<tr class="memdesc:ae2c295da152e7c2bb4f7535fe4d3818d"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM pin for the green channel.  <br /></td></tr>
 <tr class="memitem:a75b5e382f2d42f0aee16d334f014c780" id="r_a75b5e382f2d42f0aee16d334f014c780"><td class="memItemLeft">const uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a75b5e382f2d42f0aee16d334f014c780">pinB</a> = 11</td></tr>
+<tr class="memdesc:a75b5e382f2d42f0aee16d334f014c780"><td class="mdescLeft">&#160;</td><td class="mdescRight">PWM pin for the blue channel.  <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="afe461d27b9c48d5921c00d521181f12f" name="afe461d27b9c48d5921c00d521181f12f"></a>
@@ -120,6 +129,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Arduino main loop. </p>
+<p>When serial data is available: 1) Read three integers using Serial.parseInt() -&gt; r, g, b 2) Remove leftover newline/carriage return characters from the buffer 3) Print parsed values for debugging 4) Update the RGB LED using setRGB(r, g, b)</p>
+<dl class="section note"><dt>Note</dt><dd>Serial.parseInt() skips non-numeric characters (like commas), so input formats like <span class="tt">200,100,40</span> or <span class="tt">200 100 40</span> both work. </dd></dl>
 
 </div>
 </div>
@@ -147,6 +160,20 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set the RGB LED color using PWM. </p>
+<p>Ensures each channel is clamped to the valid PWM range (0..255), then writes the values using analogWrite(). For a common-cathode RGB LED:</p><ul>
+<li>0 = off</li>
+<li>255 = full brightness</li>
+</ul>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td>Red intensity (0..255) </td></tr>
+    <tr><td class="paramname">g</td><td>Green intensity (0..255) </td></tr>
+    <tr><td class="paramname">b</td><td>Blue intensity (0..255) </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a4fc01d736fe50cf5b977f755b675f11d" name="a4fc01d736fe50cf5b977f755b675f11d"></a>
@@ -164,6 +191,9 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Arduino setup function. </p>
+<p>Initializes Serial communication and sets RGB pins as OUTPUT. Turns the LED off initially by setting (0,0,0). </p>
+
 </div>
 </div>
 <a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
@@ -179,6 +209,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>PWM pin for the blue channel. </p>
+
 </div>
 </div>
 <a id="ae2c295da152e7c2bb4f7535fe4d3818d" name="ae2c295da152e7c2bb4f7535fe4d3818d"></a>
@@ -193,6 +225,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>PWM pin for the green channel. </p>
+
 </div>
 </div>
 <a id="a041d65f9ac5e3bc2381389181c4ebca0" name="a041d65f9ac5e3bc2381389181c4ebca0"></a>
@@ -206,6 +240,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>PWM pin for the red channel. </p>
 
 </div>
 </div>
